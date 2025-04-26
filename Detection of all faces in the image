@@ -1,0 +1,13 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+image = cv2.imread('hm.jpg')
+
+# Convert the image to shades of gray
+image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+
+# Detection of all faces in the image
+faces = face_cascade.detectMultiScale(image_gray)
+
+print(f"{len(faces)} лиц обнаружено на изображении.")
