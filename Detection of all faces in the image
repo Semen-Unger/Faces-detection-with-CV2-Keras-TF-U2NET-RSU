@@ -11,3 +11,10 @@ face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 faces = face_cascade.detectMultiScale(image_gray)
 
 print(f"{len(faces)} лиц обнаружено на изображении.")
+
+# For all detected faces, draw a blue square
+for x, y, width, height in faces:
+    cv2.rectangle(image, (x, y), (x + width, y + height), color=(255, 0, 0), thickness=2)
+
+# Save the image with the found faces
+cv2.imwrite("kids_detected.jpg", image)
